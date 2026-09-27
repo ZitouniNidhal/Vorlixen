@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Search, Settings, GithubIcon, Linkedin, X } from "lucide-react";
+import { Search, Settings } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
