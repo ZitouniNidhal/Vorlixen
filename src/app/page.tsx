@@ -1,6 +1,54 @@
 import Image from "next/image";
+import Link from "next/link";
+import { Rss } from "lucide-react";
+
+interface Post {
+  title: string;
+  date: string;
+  excerpt: string;
+  slug: string;
+  featured?: boolean;
+}
+
+const POSTS: Post[] = [
+  {
+    title: "How do I start contributing to the linux kernel?",
+    date: "12 May, 2025",
+    excerpt: "A blog post about how I got started contributing to the linux kernel, this is getting updated overtime, and is more about the journey than the destination",
+    slug: "starting-contributing-to-linux-kernel",
+    featured: true,
+  },
+  {
+    title: "eBPF for Observability: A Practical Introduction",
+    date: "21 Jul, 2024",
+    excerpt: "Getting started with eBPF-based observability tools - from understanding the basics to deploying in production.",
+    slug: "ebpf-observability-intro",
+    featured: true,
+  },
+  {
+    title: "Building a Homelab Kubernetes Cluster",
+    date: "9 Apr, 2024",
+    excerpt: "Documenting my homelab k8s setup - hardware choices, networking, and lessons learned from running production-style infrastructure at home.",
+    slug: "homelab-k8s-setup",
+  },
+  {
+    title: "Rust Error Handling: Beyond Result and Option",
+    date: "7 Feb, 2024",
+    excerpt: "Practical patterns for error handling in Rust applications, from simple CLI tools to complex services.",
+    slug: "rust-error-handling-patterns",
+  },
+  {
+    title: "Hello World",
+    date: "14 Jun, 2023",
+    excerpt: "The obligatory first post - why I'm starting this blog and what to expect.",
+    slug: "hello-world",
+  },
+];
 
 export default function Home() {
+  const featuredPosts = POSTS.filter(p => p.featured);
+  const recentPosts = POSTS.filter(p => !p.featured);
+
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
       <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
