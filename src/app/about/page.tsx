@@ -4,17 +4,17 @@ export default function AboutPage() {
       <h1 className="text-4xl font-bold tracking-tight">About Me</h1>
       <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
         <p>
-          Hello! I'm aRustyDev, a Distributed Systems Nerd and an Over Confident Developer. 
-          I spend most of my time exploring the depths of systems programming, security, 
-          and building things that probably should have stayed ideas.
+          Hello! I'm an AI Research and MLOps Engineer with over 3 years of experience. 
+          I specialize in bridging the gap between cutting-edge AI research and production-ready 
+          machine learning systems.
         </p>
         <p>
-          This blog is a place where I share my technical notes, learning journeys, 
-          and occasional rants about software engineering.
+          This blog is a place where I share my technical notes, research findings, 
+          and my journey in the world of AI and MLOps.
         </p>
         <p>
-          When I'm not coding, you can find me reading research papers or trying to 
-          reverse engineer things I shouldn't.
+          I have a wide range of projects on GitHub where I implement research papers, 
+          build ML pipelines, and explore the latest in AI.
         </p>
       </div>
     </div>

@@ -21,13 +21,13 @@ export default function Footer() {
     <footer className="max-w-3xl mx-auto px-4 py-12 mt-20 border-t border-border">
       <div className="flex flex-col md:flex-row justify-between items-center gap-6">
         <div className="flex items-center gap-4">
-          <Link href="https://github.com/aRustyDev" target="_blank" className="p-2 hover:bg-accent rounded-full transition-colors">
+          <Link href="https://github.com/ZitouniNidhal" target="_blank" className="p-2 hover:bg-accent rounded-full transition-colors">
             <GithubIcon />
           </Link>
-          <Link href="https://linkedin.com/in/smithadamc" target="_blank" className="p-2 hover:bg-accent rounded-full transition-colors">
+          <Link href="https://linkedin.com/in/zitouninidhal" target="_blank" className="p-2 hover:bg-accent rounded-full transition-colors">
             <LinkedinIcon />
           </Link>
-          <Link href="https://x.com/aRustyDev" target="_blank" className="p-2 hover:bg-accent rounded-full transition-colors">
+          <Link href="https://x.com/zitouninidhal" target="_blank" className="p-2 hover:bg-accent rounded-full transition-colors">
             <X className="w-5 h-5" />
           </Link>
         </div>

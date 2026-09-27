@@ -12,30 +12,30 @@ interface Post {
 
 const POSTS: Post[] = [
   {
-    title: "How do I start contributing to the linux kernel?",
+    title: "Building Scalable ML Pipelines with MLOps",
     date: "12 May, 2025",
-    excerpt: "A blog post about how I got started contributing to the linux kernel, this is getting updated overtime, and is more about the journey than the destination",
-    slug: "starting-contributing-to-linux-kernel",
+    excerpt: "Exploring the intersection of AI research and production engineering to build robust, scalable machine learning systems.",
+    slug: "scalable-ml-pipelines-mlops",
     featured: true,
   },
   {
-    title: "eBPF for Observability: A Practical Introduction",
+    title: "AI Research to Production: The Gap",
     date: "21 Jul, 2024",
-    excerpt: "Getting started with eBPF-based observability tools - from understanding the basics to deploying in production.",
-    slug: "ebpf-observability-intro",
+    excerpt: "Analyzing the challenges of deploying state-of-the-art AI research models into real-world production environments.",
+    slug: "ai-research-to-production",
     featured: true,
   },
   {
-    title: "Building a Homelab Kubernetes Cluster",
+    title: "Optimizing Model Inference for Edge Devices",
     date: "9 Apr, 2024",
-    excerpt: "Documenting my homelab k8s setup - hardware choices, networking, and lessons learned from running production-style infrastructure at home.",
-    slug: "homelab-k8s-setup",
+    excerpt: "Techniques for quantizing and optimizing large models to run efficiently on resource-constrained hardware.",
+    slug: "optimizing-model-inference",
   },
   {
-    title: "Rust Error Handling: Beyond Result and Option",
+    title: "The Future of LLM Orchestration",
     date: "7 Feb, 2024",
-    excerpt: "Practical patterns for error handling in Rust applications, from simple CLI tools to complex services.",
-    slug: "rust-error-handling-patterns",
+    excerpt: "A deep dive into the evolving landscape of LLM agents and orchestration frameworks.",
+    slug: "future-llm-orchestration",
   },
   {
     title: "Hello World",
