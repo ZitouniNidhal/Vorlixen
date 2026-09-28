@@ -1,8 +1,11 @@
 import Link from "next/link";
-import { Search, Settings } from "lucide-react";
+import { Search, Settings, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <nav className="flex items-center justify-between py-8 mb-12 max-w-3xl mx-auto px-4">
       <Link href="/" className="text-xl font-bold hover:opacity-80 transition-opacity">
@@ -19,6 +22,17 @@ export default function Navbar() {
         </ul>
         
         <div className="flex items-center gap-4">
+          <button 
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2 hover:bg-accent rounded-full transition-colors"
+            title="Toggle theme"
+          >
+            {typeof window !== 'undefined' && theme === "dark" ? (
+              <Sun className="w-5 h-5" />
+            ) : (
+              <Moon className="w-5 h-5" />
+            )}
+          </button>
           <Link href="/search" className="p-2 hover:bg-accent rounded-full transition-colors">
             <Search className="w-5 h-5" />
           </Link>
