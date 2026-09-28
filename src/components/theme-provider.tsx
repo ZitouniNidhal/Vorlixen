@@ -1,8 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
-import { cn } from "@/lib/utils";
 
 export function ThemeProvider({ children, ...props }: any) {
   return (
@@ -10,6 +8,7 @@ export function ThemeProvider({ children, ...props }: any) {
       attribute="class" 
       defaultTheme="system" 
       enableSystem 
+      disableTransitionOnChange
       {...props}
     >
       {children}
