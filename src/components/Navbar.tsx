@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { Search, Settings, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
