@@ -1,8 +1,12 @@
 import Link from "next/link";
-import { Search, Settings, GithubIcon, Linkedin, X } from "lucide-react";
+import { Search, Github, Linkedin, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
+import { Sun, Moon } from "lucide-react";
 
 export default function Navbar() {
+  const { theme, setTheme } = useTheme();
+
   return (
     <nav className="flex items-center justify-between py-8 mb-12 max-w-3xl mx-auto px-4">
       <Link href="/" className="text-xl font-bold hover:opacity-80 transition-opacity">
@@ -12,19 +16,21 @@ export default function Navbar() {
       <div className="flex items-center gap-6">
         <ul className="hidden md:flex items-center gap-6 text-sm font-medium text-muted-foreground">
           <li><Link href="/posts" className="hover:text-foreground transition-colors">Posts</Link></li>
-          <li><Link href="/tags" className="hover:text-foreground transition-colors">Tags</Link></li>
-          <li><Link href="/graph" className="hover:text-foreground transition-colors">Graph</Link></li>
           <li><Link href="/about" className="hover:text-foreground transition-colors">About</Link></li>
           <li><Link href="/archives" className="hover:text-foreground transition-colors">Archives</Link></li>
         </ul>
         
         <div className="flex items-center gap-4">
+          <button 
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2 hover:bg-accent rounded-full transition-colors"
+            title="Toggle Theme"
+          >
+            {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+          </button>
           <Link href="/search" className="p-2 hover:bg-accent rounded-full transition-colors">
             <Search className="w-5 h-5" />
           </Link>
-          <button className="p-2 hover:bg-accent rounded-full transition-colors">
-            <Settings className="w-5 h-5" />
-          </button>
         </div>
       </div>
     </nav>
