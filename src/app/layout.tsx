@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Nidhal's Blog",
-  description: "Technical notes on AI Research, MLOps, and Machine Learning.",
+  title: "Nidhal Zitouni — AI Research & MLOps Engineer",
+  description: "Portfolio, technical notes, and insights on AI Research, MLOps, and Machine Learning Systems by Nidhal Zitouni.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
