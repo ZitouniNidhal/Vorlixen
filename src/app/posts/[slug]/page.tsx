@@ -10,6 +10,10 @@ interface PostProps {
 }
 
 async function getPost(slug: string) {
+  if (!/^[A-Za-z0-9_-]+$/.test(slug)) {
+    return null;
+  }
+
   const fullPath = path.join(process.cwd(), "content", "posts", `${slug}.md`);
   
   if (!fs.existsSync(fullPath)) {
