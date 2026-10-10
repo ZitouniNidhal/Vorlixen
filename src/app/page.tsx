@@ -1,6 +1,4 @@
-import Image from "next/image";
 import Link from "next/link";
-import { Rss } from "lucide-react";
 
 interface Post {
   title: string;

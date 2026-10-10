@@ -1,16 +1,22 @@
+"use client";
+
 import Link from "next/link";
-import { Search, Github, Linkedin, X } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Search, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
-import { Sun, Moon } from "lucide-react";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <nav className="flex items-center justify-between py-8 mb-12 max-w-3xl mx-auto px-4">
       <Link href="/" className="text-xl font-bold hover:opacity-80 transition-opacity">
-        aRustyDev's Blog
+        aRustyDev&apos;s Blog
       </Link>
       
       <div className="flex items-center gap-6">
@@ -21,13 +27,15 @@ export default function Navbar() {
         </ul>
         
         <div className="flex items-center gap-4">
-          <button 
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-            className="p-2 hover:bg-accent rounded-full transition-colors"
-            title="Toggle Theme"
-          >
-            {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </button>
+          {mounted && (
+            <button 
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 hover:bg-accent rounded-full transition-colors"
+              title="Toggle Theme"
+            >
+              {theme === "dark" ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
+          )}
           <Link href="/search" className="p-2 hover:bg-accent rounded-full transition-colors">
             <Search className="w-5 h-5" />
           </Link>
