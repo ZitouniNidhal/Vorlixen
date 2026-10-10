@@ -6,7 +6,7 @@ import html from "remark-html";
 import { notFound } from "next/navigation";
 
 interface PostProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 async function getPost(slug: string) {
@@ -36,7 +36,7 @@ async function getPost(slug: string) {
 }
 
 export default async function PostPage({ params }: PostProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await getPost(slug);
 
   if (!post) {
