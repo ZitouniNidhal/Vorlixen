@@ -1,9 +1,16 @@
 "use client";
 
 import Link from "next/link";
-import { Search, Moon, Sun } from "lucide-react";
+import { ArrowRight, Search, Sun, Moon, Rocket } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/posts", label: "Blog" },
+  { href: "/about", label: "About" },
+  { href: "/archives", label: "Archives" },
+];
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -14,41 +21,57 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="flex items-center justify-between py-8 mb-8 max-w-3xl mx-auto px-4">
-      <Link href="/" className="flex items-center gap-2.5 font-bold hover:opacity-80 transition-opacity">
-        <span className="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center text-sm font-extrabold shadow-sm">
-          NZ
-        </span>
-        <span className="text-lg tracking-tight">Nidhal Zitouni</span>
-      </Link>
-      
-      <div className="flex items-center gap-6">
-        <ul className="flex items-center gap-6 text-sm font-medium text-muted-foreground">
-          <li><Link href="/" className="hover:text-foreground transition-colors">Home</Link></li>
-          <li><Link href="/about" className="hover:text-foreground transition-colors">About</Link></li>
-          <li><Link href="/posts" className="hover:text-foreground transition-colors">Posts</Link></li>
-          <li><Link href="/archives" className="hover:text-foreground transition-colors">Archives</Link></li>
-        </ul>
-        
-        <div className="flex items-center gap-2">
-          {mounted && (
-            <button 
-              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 hover:bg-accent rounded-full transition-colors"
-              title="Toggle theme"
+    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/70 backdrop-blur-xl">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-3">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-400 to-violet-500 shadow-lg shadow-cyan-500/20">
+            <Rocket className="h-5 w-5 text-slate-950" />
+          </div>
+          <div>
+            <div className="text-lg font-bold tracking-tight">NexaForge</div>
+            <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Data Platform</div>
+          </div>
+        </Link>
+
+        <div className="hidden items-center gap-6 md:flex">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
             >
-              {theme === "dark" ? (
-                <Sun className="w-4 h-4" />
-              ) : (
-                <Moon className="w-4 h-4" />
-              )}
-            </button>
-          )}
-          <Link href="/search" className="p-2 hover:bg-accent rounded-full transition-colors" title="Search">
-            <Search className="w-4 h-4" />
+              {item.label}
+            </Link>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-3">
+          <Link
+            href="/posts"
+            className="hidden items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground transition hover:border-cyan-400/60 sm:inline-flex"
+          >
+            Explore docs
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+
+          <button
+            type="button"
+            aria-label="Toggle color theme"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition hover:text-foreground"
+          >
+            {mounted && (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />)}
+          </button>
+
+          <Link
+            href="/search"
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition hover:text-foreground"
+            aria-label="Search"
+          >
+            <Search className="h-4 w-4" />
           </Link>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
   );
 }

@@ -1,12 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --accent: #f4f4f5;
-  --border: #e4e4e7;
+  --background: #07111f;
+  --foreground: #edf6ff;
+  --muted: #102033;
+  --muted-foreground: #9ab2c9;
+  --accent: #0d1d2f;
+  --border: rgba(148, 163, 184, 0.2);
+  --card: rgba(10, 18, 31, 0.8);
+  --primary: #4cc9f0;
+  --primary-foreground: #04151e;
+  --secondary: #8b5cf6;
+  --success: #34d399;
 }
 
 @theme inline {
@@ -16,19 +21,34 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-border: var(--border);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-success: var(--success);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --muted: #18181b;
-    --muted-foreground: #a1a1aa;
-    --accent: #18181b;
-    --border: #27272a;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(76, 201, 240, 0.12), transparent 18%),
+    radial-gradient(circle at bottom right, rgba(139, 92, 246, 0.13), transparent 26%),
+    var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(76, 201, 240, 0.35);
 }
 
 .prose {
@@ -55,11 +75,4 @@
 
 .prose li {
   margin-bottom: 0.5rem;
-}
-
-
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
