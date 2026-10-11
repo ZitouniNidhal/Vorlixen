@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Zitouni | Data & AI Platform",
+  title: "NexaForge | Data & AI Platform",
   description: "A professional AI data platform for collaboration, experimentation, model lifecycle management, and production-grade MLOps.",
 };
 

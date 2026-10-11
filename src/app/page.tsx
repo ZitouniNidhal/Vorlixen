@@ -68,7 +68,7 @@ export default function Home() {
             </h1>
 
             <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-              Zitouni helps teams accelerate discovery, streamline model delivery, and scale trustworthy AI systems from prototype to production.
+              NexaForge helps teams accelerate discovery, streamline model delivery, and scale trustworthy AI systems from prototype to production.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4">
@@ -179,7 +179,7 @@ export default function Home() {
           <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">Ready to build?</p>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Turn AI ideas into dependable systems.</h2>
           <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
-            From data foundations to deployment strategy, Zitouni helps teams build the operational maturity needed for real-world AI success.
+            From data foundations to deployment strategy, NexaForge helps teams build the operational maturity needed for real-world AI success.
           </p>
           <Link
             href="/about"

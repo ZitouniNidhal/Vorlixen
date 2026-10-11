@@ -5,7 +5,7 @@ export default function Footer() {
     <footer className="border-t border-border/80 bg-slate-950/40">
       <div className="mx-auto flex max-w-7xl flex-col gap-6 px-4 py-10 sm:px-6 lg:px-8 md:flex-row md:items-center md:justify-between">
         <div>
-          <div className="text-lg font-semibold tracking-tight">Zitouni</div>
+          <div className="text-lg font-semibold tracking-tight">NexaForge</div>
           <p className="mt-2 text-sm text-muted-foreground">
             MLOps, data engineering, and AI platform strategy.
           </p>
@@ -33,7 +33,7 @@ export default function Footer() {
           </Link>
         </div>
 
-        <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} Zitouni. All rights reserved.</p>
+        <p className="text-sm text-muted-foreground">© {new Date().getFullYear()} NexaForge. All rights reserved.</p>
       </div>
     </footer>
   );

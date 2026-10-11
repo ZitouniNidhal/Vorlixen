@@ -28,7 +28,7 @@ export default function Navbar() {
             <Rocket className="h-5 w-5 text-slate-950" />
           </div>
           <div>
-            <div className="text-lg font-bold tracking-tight">Zitouni</div>
+            <div className="text-lg font-bold tracking-tight">NexaForge</div>
             <div className="text-[10px] uppercase tracking-[0.28em] text-muted-foreground">Data Platform</div>
           </div>
         </Link>
