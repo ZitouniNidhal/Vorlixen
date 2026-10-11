@@ -6,10 +6,14 @@ import html from "remark-html";
 import { notFound } from "next/navigation";
 
 interface PostProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }
 
 async function getPost(slug: string) {
+  if (!/^[A-Za-z0-9_-]+$/.test(slug)) {
+    return null;
+  }
+
   const fullPath = path.join(process.cwd(), "content", "posts", `${slug}.md`);
   
   if (!fs.existsSync(fullPath)) {
@@ -32,7 +36,7 @@ async function getPost(slug: string) {
 }
 
 export default async function PostPage({ params }: PostProps) {
-  const { slug } = params;
+  const { slug } = await params;
   const post = await getPost(slug);
 
   if (!post) {
