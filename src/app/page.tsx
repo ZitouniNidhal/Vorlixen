@@ -10,35 +10,29 @@ interface Post {
 
 const POSTS: Post[] = [
   {
-    title: "How do I start contributing to the linux kernel?",
+    title: "Building End-to-End LLM MLOps & Evaluation Pipelines",
     date: "12 May, 2025",
-    excerpt: "A blog post about how I got started contributing to the linux kernel, this is getting updated overtime, and is more about the journey than the destination",
-    slug: "starting-contributing-to-linux-kernel",
+    excerpt: "Automating synthetic dataset generation, LoRA fine-tuning, and real-time safety and quality evaluation metrics in production.",
+    slug: "llm-mlops-pipelines",
     featured: true,
   },
   {
-    title: "eBPF for Observability: A Practical Introduction",
+    title: "Model Optimization with TensorRT and Triton Inference Server",
     date: "21 Jul, 2024",
-    excerpt: "Getting started with eBPF-based observability tools - from understanding the basics to deploying in production.",
-    slug: "ebpf-observability-intro",
+    excerpt: "Techniques for reducing deep learning inference latency by 45% using TensorRT, ONNX Runtime, and dynamic batching.",
+    slug: "tensorrt-triton-optimization",
     featured: true,
   },
   {
-    title: "Building a Homelab Kubernetes Cluster",
+    title: "Building Feature Stores at Scale with PySpark & BigQuery",
     date: "9 Apr, 2024",
-    excerpt: "Documenting my homelab k8s setup - hardware choices, networking, and lessons learned from running production-style infrastructure at home.",
-    slug: "homelab-k8s-setup",
+    excerpt: "Architecting reliable feature stores and preprocessing pipelines for real-time model serving.",
+    slug: "pyspark-feature-stores",
   },
   {
-    title: "Rust Error Handling: Beyond Result and Option",
-    date: "7 Feb, 2024",
-    excerpt: "Practical patterns for error handling in Rust applications, from simple CLI tools to complex services.",
-    slug: "rust-error-handling-patterns",
-  },
-  {
-    title: "Hello World",
+    title: "Hello World & Welcome to my AI & MLOps Engineering Blog",
     date: "14 Jun, 2023",
-    excerpt: "The obligatory first post - why I'm starting this blog and what to expect.",
+    excerpt: "An introduction to my technical work in AI research, MLOps, and cloud infrastructure.",
     slug: "hello-world",
   },
 ];

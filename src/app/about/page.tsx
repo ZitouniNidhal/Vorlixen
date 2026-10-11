@@ -4,17 +4,13 @@ export default function AboutPage() {
       <h1 className="text-4xl font-bold tracking-tight">About Me</h1>
       <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
         <p>
-          Hello! I'm aRustyDev, a Distributed Systems Nerd and an Over Confident Developer. 
-          I spend most of my time exploring the depths of systems programming, security, 
-          and building things that probably should have stayed ideas.
+          Hello! I'm <strong>Nidhal Zitouni</strong>, an AI Research &amp; MLOps Engineer. 
+          I specialize in deep learning research, model optimization, distributed training, 
+          and production-grade MLOps pipelines.
         </p>
         <p>
-          This blog is a place where I share my technical notes, learning journeys, 
-          and occasional rants about software engineering.
-        </p>
-        <p>
-          When I'm not coding, you can find me reading research papers or trying to 
-          reverse engineer things I shouldn't.
+          This blog is a dedicated space where I share technical articles, architectural insights, 
+          and practical benchmarks around AI engineering and scalable cloud infrastructure.
         </p>
       </div>
     </div>

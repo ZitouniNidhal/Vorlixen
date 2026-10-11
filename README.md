@@ -1,9 +1,9 @@
-# aRustyDev's Blog
+# Nidhal Zitouni's Blog
 
-Technical notes on security, systems programming, and building things.
+Technical notes on AI Research, MLOps engineering, deep learning, and cloud infrastructure.
 
 ## About
-This blog is a collection of my technical explorations, focusing on Rust, Linux kernel development, eBPF, and general systems engineering.
+This blog is a collection of technical explorations by Nidhal Zitouni.
 
 ## Tech Stack
 - **Framework**: [Next.js](https://nextjs.org)
