@@ -1,195 +1,265 @@
 import Link from "next/link";
-import { ArrowRight, BarChart3, Database, GitBranch, ShieldCheck, Sparkles, Workflow } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Briefcase,
+  ChevronRight,
+  Code2,
+  FolderGit2,
+  GitBranch,
+  Rocket,
+  ShieldCheck,
+  Sparkles,
+  Star,
+  Users,
+} from "lucide-react";
 
-const metrics = [
-  { label: "Projects launched", value: "18+" },
-  { label: "Models deployed", value: "42" },
-  { label: "Avg. pipeline uptime", value: "99.9%" },
-  { label: "Data teams enabled", value: "12" },
-];
-
-const platformFeatures = [
+const repoCards = [
   {
-    icon: Database,
-    title: "Data products",
-    description: "Build governed, reusable data assets that connect analytics, ML, and product teams around a single source of truth.",
+    name: "nexaforge-platform",
+    description: "Core AI platform and orchestration services for data pipelines and ML workflows.",
+    language: "TypeScript",
+    stars: 128,
+    forks: 21,
+    status: "Active",
   },
   {
-    icon: Workflow,
-    title: "MLOps workflows",
-    description: "Operationalize experimentation, training, deployment, observability, and rollback across every stage of the lifecycle.",
+    name: "ml-workflows",
+    description: "Reusable training, evaluation, and deployment pipelines for production ML systems.",
+    language: "Python",
+    stars: 94,
+    forks: 17,
+    status: "Stable",
+  },
+  {
+    name: "data-contracts",
+    description: "Schema governance layer and validation tooling for trusted data products.",
+    language: "Go",
+    stars: 76,
+    forks: 11,
+    status: "Healthy",
+  },
+];
+
+const featureColumns = [
+  {
+    icon: FolderGit2,
+    title: "Repositories",
+    desc: "Organize projects, codebases, and AI assets in a clean collaboration workspace.",
   },
   {
     icon: GitBranch,
-    title: "Versioned collaboration",
-    description: "Track datasets, experiments, model revisions, and deployment history while keeping every contributor aligned.",
+    title: "Version control",
+    desc: "Track work across experiments, releases, and code contributions with strong lineage.",
   },
   {
     icon: ShieldCheck,
-    title: "Production trust",
-    description: "Security, lineage, and governance built in so teams can scale confidently from prototype to production.",
+    title: "Governance",
+    desc: "Security, review, and policy controls built directly into your delivery process.",
   },
 ];
 
-const posts = [
-  {
-    title: "Building end-to-end LLM MLOps & evaluation pipelines",
-    date: "12 May, 2025",
-    excerpt: "Automating synthetic dataset generation, LoRA fine-tuning, and production-grade evaluation loops for trustworthy AI systems.",
-    slug: "llm-mlops-pipelines",
-  },
-  {
-    title: "Model optimization with TensorRT and Triton Inference Server",
-    date: "21 Jul, 2024",
-    excerpt: "Reduce inference latency with optimized serving, batching, and deployment strategies for production workloads.",
-    slug: "tensorrt-triton-optimization",
-  },
-  {
-    title: "Feature stores at scale with PySpark & BigQuery",
-    date: "9 Apr, 2024",
-    excerpt: "Design reliable feature pipelines for experimentation, online serving, and real-time model interoperability.",
-    slug: "pyspark-feature-stores",
-  },
+const dashboardStats = [
+  { label: "Active repos", value: "48" },
+  { label: "Deployments", value: "226" },
+  { label: "Avg. lead time", value: "4d" },
+  { label: "Uptime", value: "99.9%" },
+];
+
+const highlights = [
+  "AI collaboration workspace",
+  "Model lifecycle management",
+  "Secure deployment workflows",
+  "Cross-functional analytics",
 ];
 
 export default function Home() {
   return (
-    <div className="pb-16">
-      <section className="mx-auto max-w-7xl px-4 pb-20 pt-10 sm:px-6 lg:px-8 lg:pt-20">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-          <div>
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-cyan-500/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-cyan-300">
-              <Sparkles className="h-3.5 w-3.5" />
-              AI infrastructure for modern teams
+    <div className="gitea-surface min-h-screen px-4 pb-20 pt-8 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl">
+        <section className="gitea-panel rounded-2xl p-6 sm:p-8">
+          <div className="flex flex-col gap-6 border-b border-border pb-6 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.22em] text-emerald-300">
+                <Sparkles className="h-3.5 w-3.5" />
+                Gitea-inspired platform
+              </div>
+              <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">
+                Build, ship, and scale AI products with confidence.
+              </h1>
             </div>
 
-            <h1 className="max-w-3xl text-4xl font-black tracking-tight text-white sm:text-5xl lg:text-7xl">
-              The collaborative platform for data, ML, and AI operations.
-            </h1>
-
-            <p className="mt-6 max-w-2xl text-lg text-muted-foreground">
-              NexaForge helps teams accelerate discovery, streamline model delivery, and scale trustworthy AI systems from prototype to production.
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/posts"
-                className="inline-flex items-center gap-2 rounded-full bg-cyan-400 px-5 py-3 font-medium text-slate-950 transition hover:bg-cyan-300"
-              >
-                Explore platform
+            <div className="flex items-center gap-3">
+              <Link href="/posts" className="gitea-button-primary inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium">
+                Explore workspace
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-white/5 px-5 py-3 font-medium text-foreground transition hover:border-cyan-400/60"
-              >
-                Meet the engineer
+              <Link href="/about" className="gitea-button inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium">
+                About us
               </Link>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-border bg-card/80 p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur">
-            <div className="mb-6 flex items-center justify-between">
-              <div>
-                <p className="text-sm uppercase tracking-[0.18em] text-muted-foreground">Platform overview</p>
-                <h2 className="mt-2 text-2xl font-bold">Live deployment</h2>
+          <div className="mt-8 grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+            <div className="rounded-xl border border-border bg-[#0d1117] p-5">
+              <div className="mb-5 flex items-center justify-between border-b border-border pb-3">
+                <div className="flex items-center gap-3">
+                  <div className="rounded-md border border-border bg-[#161b22] p-2">
+                    <FolderGit2 className="h-4 w-4 text-cyan-300" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-white">NexaForge / platform</div>
+                    <div className="text-xs text-muted-foreground">Private • 32 contributors</div>
+                  </div>
+                </div>
+                <div className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-1 text-[10px] uppercase tracking-[0.18em] text-emerald-300">
+                  Healthy
+                </div>
               </div>
-              <div className="rounded-full border border-emerald-400/30 bg-emerald-500/10 px-2.5 py-1 text-xs font-medium text-emerald-300">
-                Healthy
+
+              <div className="space-y-4">
+                {repoCards.map((repo) => (
+                  <div key={repo.name} className="flex items-center justify-between rounded-lg border border-border bg-[#161b22] p-4">
+                    <div className="min-w-0">
+                      <div className="flex items-center gap-2">
+                        <Code2 className="h-4 w-4 text-muted-foreground" />
+                        <span className="truncate text-sm font-medium text-white">{repo.name}</span>
+                      </div>
+                      <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{repo.description}</p>
+                    </div>
+                    <div className="hidden items-center gap-3 text-xs text-muted-foreground md:flex">
+                      <span className="inline-flex items-center gap-1"><Star className="h-3.5 w-3.5" /> {repo.stars}</span>
+                      <span className="inline-flex items-center gap-1"><GitBranch className="h-3.5 w-3.5" /> {repo.forks}</span>
+                      <span className="rounded-full border border-border px-2 py-1 text-[10px] uppercase tracking-[0.12em] text-emerald-300">
+                        {repo.status}
+                      </span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
             <div className="space-y-5">
+              <div className="rounded-xl border border-border bg-[#161b22] p-5">
+                <div className="mb-4 flex items-center justify-between">
+                  <div className="text-sm font-medium text-white">Overview</div>
+                  <span className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Live</span>
+                </div>
+                <div className="space-y-4">
+                  {dashboardStats.map((item) => (
+                    <div key={item.label} className="flex items-center justify-between rounded-lg border border-border bg-[#0d1117] px-3 py-2">
+                      <span className="text-sm text-muted-foreground">{item.label}</span>
+                      <span className="text-sm font-semibold text-foreground">{item.value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="rounded-xl border border-border bg-[#161b22] p-5">
+                <div className="mb-3 text-sm font-medium text-white">Highlights</div>
+                <ul className="space-y-3">
+                  {highlights.map((item) => (
+                    <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-emerald-500/10 text-emerald-300">
+                        <ChevronRight className="h-3.5 w-3.5" />
+                      </span>
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-10 grid gap-6 md:grid-cols-3">
+          {featureColumns.map(({ icon: Icon, title, desc }) => (
+            <div key={title} className="gitea-panel rounded-2xl p-6">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-[#161b22] text-cyan-300">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h2 className="text-xl font-semibold text-white">{title}</h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{desc}</p>
+            </div>
+          ))}
+        </section>
+
+        <section className="mt-10 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+          <div className="gitea-panel rounded-2xl p-6">
+            <div className="mb-4 flex items-center gap-3">
+              <div className="rounded-lg border border-border bg-[#161b22] p-2">
+                <Rocket className="h-4 w-4 text-emerald-300" />
+              </div>
+              <div>
+                <div className="text-sm font-medium text-white">Delivery workflow</div>
+              </div>
+            </div>
+
+            <div className="space-y-4">
               {[
-                ["Model registry", "24 active versions"],
-                ["Feature pipelines", "8 automated jobs"],
-                ["Experiment tracking", "1,287 runs"],
-                ["Incident response", "2 min MTTR"],
-              ].map(([label, value]) => (
-                <div key={label} className="flex items-center justify-between rounded-2xl border border-border bg-slate-900/60 px-4 py-3">
-                  <span className="text-sm text-muted-foreground">{label}</span>
-                  <span className="text-sm font-semibold text-foreground">{value}</span>
+                "Connect data and model sources",
+                "Review experiments and release quality gates",
+                "Deploy to production with traceability",
+              ].map((step, index) => (
+                <div key={step} className="flex items-start gap-3 rounded-xl border border-border bg-[#0d1117] p-3">
+                  <div className="mt-0.5 flex h-6 w-6 items-center justify-center rounded-full bg-cyan-500/10 text-xs font-semibold text-cyan-300">
+                    {index + 1}
+                  </div>
+                  <p className="text-sm text-muted-foreground">{step}</p>
                 </div>
               ))}
             </div>
           </div>
-        </div>
-      </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid gap-4 md:grid-cols-4">
-          {metrics.map((item) => (
-            <div key={item.label} className="rounded-2xl border border-border bg-card/70 p-5 backdrop-blur-sm">
-              <div className="text-3xl font-black text-white">{item.value}</div>
-              <p className="mt-2 text-sm text-muted-foreground">{item.label}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">Platform capabilities</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Designed for serious AI delivery.</h2>
-          </div>
-        </div>
-
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {platformFeatures.map(({ icon: Icon, title, description }) => (
-            <div key={title} className="rounded-3xl border border-border bg-card/70 p-6 transition hover:-translate-y-1 hover:border-cyan-400/50">
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400/25 to-violet-500/25 text-cyan-300">
-                <Icon className="h-5 w-5" />
+          <div className="gitea-panel rounded-2xl p-6">
+            <div className="mb-4 flex items-center gap-3">
+              <div className="rounded-lg border border-border bg-[#161b22] p-2">
+                <Users className="h-4 w-4 text-violet-300" />
               </div>
-              <h3 className="text-xl font-semibold text-white">{title}</h3>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground">{description}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 pb-12 sm:px-6 lg:px-8">
-        <div className="mb-8 flex items-end justify-between">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-violet-300">Latest insights</p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">Expert analysis and field notes.</h2>
-          </div>
-          <Link href="/posts" className="hidden text-sm font-medium text-cyan-300 transition hover:text-cyan-200 sm:inline-flex">
-            View all posts →
-          </Link>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-3">
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/posts/${post.slug}`} className="group rounded-3xl border border-border bg-card/70 p-6 transition hover:border-cyan-400/50 hover:bg-card">
-              <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">{post.date}</p>
-              <h3 className="mt-4 text-2xl font-semibold leading-tight text-white group-hover:text-cyan-300">{post.title}</h3>
-              <p className="mt-4 text-sm leading-6 text-muted-foreground">{post.excerpt}</p>
-              <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-300">
-                Read article
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              <div>
+                <div className="text-sm font-medium text-white">Built for modern teams</div>
               </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+            </div>
 
-      <section className="mx-auto max-w-5xl px-4 pb-20 pt-6 sm:px-6 lg:px-8">
-        <div className="rounded-[2rem] border border-cyan-400/30 bg-gradient-to-r from-cyan-500/10 via-slate-900 to-violet-500/10 p-8 text-center shadow-xl shadow-cyan-950/20">
-          <p className="text-sm uppercase tracking-[0.2em] text-cyan-300">Ready to build?</p>
-          <h2 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">Turn AI ideas into dependable systems.</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground">
-            From data foundations to deployment strategy, NexaForge helps teams build the operational maturity needed for real-world AI success.
-          </p>
-          <Link
-            href="/about"
-            className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 font-medium text-slate-900 transition hover:bg-cyan-100"
-          >
-            Let&apos;s connect
+            <div className="grid gap-3 sm:grid-cols-2">
+              {[
+                "AI product teams",
+                "Data engineering",
+                "Research operations",
+                "Platform engineering",
+              ].map((team) => (
+                <div key={team} className="rounded-xl border border-border bg-[#0d1117] px-3 py-3 text-sm text-muted-foreground">
+                  {team}
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6 rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-4">
+              <div className="flex items-center gap-2 text-sm font-medium text-emerald-300">
+                <BookOpen className="h-4 w-4" />
+                Platform principles
+              </div>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">
+                Clear ownership, trusted data, controlled releases, and documented engineering rituals for sustainable AI growth.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section className="mt-10 flex flex-col items-center justify-between gap-5 rounded-2xl border border-border bg-[#161b22] p-7 text-center md:flex-row md:text-left">
+          <div>
+            <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-cyan-300">
+              <Briefcase className="h-3.5 w-3.5" />
+              Ready to launch
+            </div>
+            <h2 className="text-2xl font-semibold text-white">Turn ideas into production-grade systems.</h2>
+          </div>
+          <Link href="/about" className="gitea-button-primary inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium">
+            Contact the team
             <ArrowRight className="h-4 w-4" />
           </Link>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   );
 }
