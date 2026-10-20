@@ -1,0 +1,32 @@
+name: Research & Experiment Proposal
+description: Propose an MLOps, eBPF, AI telemetry, or architectural experiment
+title: "[Research]: "
+labels: ["research", "experiment"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this template to discuss exploratory AI workflows, distributed tracing concepts, or eBPF telemetry experiments before coding.
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Hypothesis / Research Goal
+      description: What are you seeking to prove, explore, or benchmark?
+      placeholder: E.g., Benchmarking kernel ring-buffer overhead for L7 LLM prompt interception...
+    validations:
+      required: true
+  - type: textarea
+    id: methodology
+    attributes:
+      label: Methodology & Architecture
+      description: How will the experiment be structured and evaluated?
+      placeholder: Describe the setup, dependencies, metrics, and evaluation gates...
+    validations:
+      required: true
+  - type: textarea
+    id: expected-outcome
+    attributes:
+      label: Expected Outcomes & Risks
+      description: What are the anticipated benefits or trade-offs for NexaForge?
+    validations:
+      required: true
