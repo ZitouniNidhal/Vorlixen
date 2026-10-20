@@ -42,9 +42,13 @@ To maintain total transparency with contributors, here is the exact breakdown be
 | Capability | Status | Implementation Details |
 |---|---|---|
 | **TraceForge-X Waterfall** | :white_check_mark: **Implemented** | Interactive timeline rendering of parent-child spans with latency bars, service badges, and error flags in `src/app/traceforge/page.tsx`. |
+| **Differential Behavioral Analysis** | :white_check_mark: **Implemented** | A/B execution trace comparison engine in `src/lib/behavioral.ts` computing latency delta, token shift, and anomaly severity flags. |
+| **Hypothesis & Provenance Workbench** | :white_check_mark: **Implemented** | Falsifiable behavioral hypotheses with root cause categories, confidence scoring, and concrete span evidence provenance. |
+| **Automated Regression Test Generator** | :white_check_mark: **Implemented** | In-browser generator producing executable native `node:test` code snippets from detected trace anomalies and verified hypotheses. |
 | **Span Inspector & Metadata** | :white_check_mark: **Implemented** | Attributes inspection (`llm.model`, `cache.hit`, `db.system`, HTTP status) and error diagnostics in `src/lib/traceforge.ts`. |
 | **Token & Cost Accounting** | :white_check_mark: **Implemented** | Aggregate token metrics and dollar cost estimation dynamically calculated across execution traces. |
 | **In-Browser OTel Export** | :white_check_mark: **Implemented** | Download trace sessions directly formatted in OpenTelemetry (OTel) JSON schema. |
+| **Persistent Behavioral Memory** | :white_check_mark: **Implemented** | LocalStorage persistence preserving custom simulation runs across browser refreshes. |
 | **Markdown Content Engine** | :white_check_mark: **Implemented** | Filesystem-backed post retrieval with strict XSS sanitization (`remark-html`), SSG pre-rendering (`generateStaticParams`), and year grouping. |
 | **100% GitHub Actions Hosting** | :white_check_mark: **Implemented** | Static export (`output: 'export'`) automatically tested and deployed to GitHub Pages via `.github/workflows/deploy.yml`. |
 | *Native eBPF Daemon (C/Go)* | :hourglass_flowing_sand: *Planned Research* | Real kernel-level socket filter daemon attaching to host network interfaces (currently modeled via telemetry simulators). |
