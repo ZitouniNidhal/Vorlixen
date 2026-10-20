@@ -19,7 +19,7 @@ NexaForge brings together the structure of a developer workspace with the energy
 - **Icons**: [Lucide React](https://lucide.dev)
 - **Content Engine**: gray-matter + remark (with strict XSS sanitization)
 - **Test Runner**: Node.js Native Test Runner (`node:test`, `node:assert`)
-- **CI/CD**: GitHub Actions automated lint, typecheck, unit test, and build pipeline
+- **Hosting & CI/CD**: 100% GitHub Actions & GitHub Pages (No Vercel dependency)
 
 ## Getting Started
 
@@ -49,9 +49,19 @@ npm run typecheck
 # Unit tests
 npm test
 
-# Production build & static generation
+# Production static export build
 npm run build
 ```
+
+## Continuous Deployment via GitHub Actions (No Vercel)
+This repository is set up with automated CI/CD directly inside GitHub Actions:
+- **CI Pipeline** (`.github/workflows/ci.yml`): Runs on every pull request and push to validate linting, TypeScript types, and automated unit tests.
+- **Pages Deployment** (`.github/workflows/deploy.yml`): Automatically compiles an optimized static export (`output: 'export'`) to `./out` and deploys directly to **GitHub Pages** using official GitHub actions (`actions/deploy-pages@v4`).
+
+To enable GitHub Pages hosting:
+1. In the repository, navigate to **Settings** -> **Pages**.
+2. Under **Build and deployment** -> **Source**, select **GitHub Actions**.
+3. Pushes to `master`, `main`, or `feature/traceforge-x` will automatically build and publish the live site.
 
 ## TraceForge-X Telemetry Engine
 TraceForge-X provides full-lifecycle tracing for LLM and data pipelines:
