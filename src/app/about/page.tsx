@@ -1,10 +1,17 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "About | NexaForge",
+  description: "Learn about Nidhal Zitouni — AI Research & MLOps Engineer specializing in deep learning, model optimization, and production-grade pipelines.",
+};
+
 export default function AboutPage() {
   return (
     <div className="py-12 space-y-8 max-w-2xl mx-auto">
       <h1 className="text-4xl font-bold tracking-tight">About Me</h1>
       <div className="space-y-4 text-lg text-muted-foreground leading-relaxed">
         <p>
-          Hello! I'm <strong>Nidhal Zitouni</strong>, an AI Research &amp; MLOps Engineer. 
+          Hello! I&apos;m <strong>Nidhal Zitouni</strong>, an AI Research &amp; MLOps Engineer. 
           I specialize in deep learning research, model optimization, distributed training, 
           and production-grade MLOps pipelines.
         </p>

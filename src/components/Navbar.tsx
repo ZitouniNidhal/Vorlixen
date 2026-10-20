@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRight, Bell, ChevronDown, Search, Sun, Moon, Rocket, GitBranch } from "lucide-react";
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 const navItems = [
   { href: "/", label: "Overview" },
@@ -12,13 +12,19 @@ const navItems = [
   { href: "/archives", label: "Settings" },
 ];
 
-export default function Navbar() {
-  const { theme, setTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
+/**
+ * Detect client-side mounting without useEffect + setState,
+ * which triggers the react-hooks/set-state-in-effect lint rule.
+ * useSyncExternalStore is the React 19-idiomatic way: the server
+ * snapshot returns false, the client snapshot returns true.
+ */
+const subscribeNoop = () => () => {};
+const getClientSnapshot = () => true;
+const getServerSnapshot = () => false;
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+export default function Navbar() {
+  const { resolvedTheme, setTheme } = useTheme();
+  const mounted = useSyncExternalStore(subscribeNoop, getClientSnapshot, getServerSnapshot);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/70 bg-[#0d1117]/85 backdrop-blur-xl">
@@ -56,10 +62,10 @@ export default function Navbar() {
           <button
             type="button"
             aria-label="Toggle color theme"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
             className="flex h-9 w-9 items-center justify-center rounded-md border border-border bg-[#161b22] text-muted-foreground transition hover:text-foreground"
           >
-            {mounted && (theme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />)}
+            {mounted && (resolvedTheme === "dark" ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />)}
           </button>
 
           <button
