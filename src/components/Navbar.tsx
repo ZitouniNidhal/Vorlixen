@@ -1,15 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Bell, ChevronDown, Search, Sun, Moon, Rocket, GitBranch } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { ArrowRight, Bell, Search, Sun, Moon, Rocket, Activity } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useSyncExternalStore } from "react";
 
 const navItems = [
   { href: "/", label: "Overview" },
-  { href: "/posts", label: "Repositories" },
-  { href: "/about", label: "Projects" },
-  { href: "/archives", label: "Settings" },
+  { href: "/traceforge", label: "TraceForge-X", isLive: true },
+  { href: "/posts", label: "Workflows" },
+  { href: "/archives", label: "Archives" },
+  { href: "/about", label: "About" },
 ];
 
 /**
@@ -23,6 +25,7 @@ const getClientSnapshot = () => true;
 const getServerSnapshot = () => false;
 
 export default function Navbar() {
+  const pathname = usePathname();
   const { resolvedTheme, setTheme } = useTheme();
   const mounted = useSyncExternalStore(subscribeNoop, getClientSnapshot, getServerSnapshot);
 
@@ -39,16 +42,31 @@ export default function Navbar() {
             </div>
           </Link>
 
-          <div className="hidden items-center gap-5 md:flex">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-muted-foreground transition hover:text-foreground"
-              >
-                {item.label}
-              </Link>
-            ))}
+          <div className="hidden items-center gap-4 md:flex">
+            {navItems.map((item) => {
+              const isActive =
+                item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`inline-flex items-center gap-1.5 rounded-md px-2.5 py-1 text-sm font-medium transition ${
+                    isActive
+                      ? "bg-[#161b22] text-white"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                >
+                  {item.label}
+                  {item.isLive && (
+                    <span className="inline-flex items-center gap-1 rounded-full border border-cyan-500/40 bg-cyan-500/15 px-1.5 py-0.2 text-[9px] font-bold uppercase tracking-wider text-cyan-300">
+                      <span className="h-1.5 w-1.5 rounded-full bg-cyan-400 animate-pulse" />
+                      Live
+                    </span>
+                  )}
+                </Link>
+              );
+            })}
           </div>
         </div>
 
@@ -76,20 +94,20 @@ export default function Navbar() {
             <Bell className="h-4 w-4" />
           </button>
 
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 rounded-md border border-border bg-[#161b22] px-3 py-2 text-sm font-medium text-foreground"
+          <Link
+            href="/traceforge"
+            className="inline-flex items-center gap-1.5 rounded-md border border-border bg-[#161b22] px-3 py-2 text-xs font-mono font-medium text-foreground hover:border-cyan-500/40 transition"
           >
-            <GitBranch className="h-4 w-4 text-emerald-400" />
-            main
-            <ChevronDown className="h-3.5 w-3.5 text-muted-foreground" />
-          </button>
+            <Activity className="h-3.5 w-3.5 text-cyan-400" />
+            <span className="hidden sm:inline">TraceForge-X</span>
+            <span className="rounded bg-cyan-500/20 px-1 py-0.5 text-[9px] text-cyan-300">v2.4</span>
+          </Link>
 
           <Link
             href="/posts"
             className="hidden items-center gap-2 rounded-md border border-emerald-500/40 bg-emerald-500/10 px-3 py-2 text-sm font-medium text-emerald-300 sm:inline-flex"
           >
-            New project
+            Explore
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
