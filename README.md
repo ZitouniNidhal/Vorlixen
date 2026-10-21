@@ -15,7 +15,7 @@
 
 ---
 
-## The Problem NexaForge Solves
+## The Problem Vorlixen Solves
 
 Building, testing, and shipping production-grade AI systems requires more than isolated notebooks or generic SaaS dashboards:
 
