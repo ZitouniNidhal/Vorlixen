@@ -1,0 +1,45 @@
+name: Content & Documentation Validation
+
+on:
+  push:
+    paths:
+      - 'content/**'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'SECURITY.md'
+      - 'src/lib/posts.ts'
+  pull_request:
+    paths:
+      - 'content/**'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - 'SECURITY.md'
+      - 'src/lib/posts.ts'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-content:
+    name: Verify Content Schemas & Integrity
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Content & Schema Unit Tests
+        run: node --test tests/posts.test.mjs
+
+      - name: Verify Static Prerendering of Markdown
+        run: npm run build
