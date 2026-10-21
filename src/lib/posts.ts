@@ -7,9 +7,19 @@ export interface PostMeta {
   date: string;
   excerpt: string;
   slug: string;
+  tags: string[];
+  readingTimeMinutes: number;
 }
 
 const postsDirectory = path.join(process.cwd(), "content", "posts");
+
+/**
+ * Calculate estimated reading time based on standard 200 words-per-minute heuristic.
+ */
+export function calculateReadingTime(text: string): number {
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
 
 /**
  * Read all markdown posts from the content directory.
@@ -30,13 +40,18 @@ export function getAllPosts(): PostMeta[] {
       const slug = fileName.replace(/\.md$/, "");
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, "utf8");
-      const { data } = matter(fileContents);
+      const { data, content } = matter(fileContents);
+
+      const rawTags = Array.isArray(data.tags) ? data.tags : [];
+      const tags = rawTags.map((t: unknown) => String(t).trim()).filter(Boolean);
 
       return {
         slug,
         title: (data.title as string) ?? slug,
         date: (data.date as string) ?? "",
         excerpt: (data.excerpt as string) ?? "",
+        tags,
+        readingTimeMinutes: calculateReadingTime(content),
       };
     });
 
