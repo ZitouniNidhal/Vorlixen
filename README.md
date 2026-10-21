@@ -1,6 +1,6 @@
 <div align="center">
 
-# NexaForge
+# Vorlixen
 
 **A Developer-First Workspace & Distributed Observability Platform for AI & MLOps Pipelines**
 
