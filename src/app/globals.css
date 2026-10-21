@@ -6,7 +6,7 @@
   --muted: #161b22;
   --muted-foreground: #8b949e;
   --accent: #1f6feb;
-  --border: rgba(110, 118, 129, 0.4);
+  --border: rgba(110, 118, 129, 0.35);
   --card: rgba(22, 27, 34, 0.95);
   --primary: #2da44e;
   --primary-foreground: #dff9e6;
@@ -39,7 +39,8 @@ html {
 body {
   background: color-mix(in srgb, var(--background) 100%, #0b1220 100%);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
 }
 
 * {
@@ -47,43 +48,146 @@ body {
 }
 
 ::selection {
-  background: rgba(88, 166, 255, 0.35);
+  background: rgba(56, 189, 248, 0.3);
+  color: #38bdf8;
 }
 
+/* Enhanced Markdown Prose Styles */
 .prose {
-  max-width: none;
+  max-width: 100%;
+  color: #c9d1d9;
+  line-height: 1.75;
+  font-size: 1rem;
 }
 
 .prose h1 {
-  font-size: 1.875rem;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin-top: 2rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.prose h2 {
+  font-size: 1.6rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #f0f6fc;
+  margin-top: 2.25rem;
   margin-bottom: 1rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid rgba(110, 118, 129, 0.2);
+}
+
+.prose h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #58a6ff;
+  margin-top: 1.75rem;
+  margin-bottom: 0.75rem;
 }
 
 .prose p {
-  margin-bottom: 1rem;
-  line-height: 1.625;
-  color: var(--muted-foreground);
+  margin-top: 1rem;
+  margin-bottom: 1.25rem;
+  color: #c9d1d9;
+  line-height: 1.8;
+}
+
+.prose a {
+  color: #58a6ff;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.prose a:hover {
+  color: #79c0ff;
+}
+
+.prose strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.prose ul, .prose ol {
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-left: 1.75rem;
 }
 
 .prose ul {
   list-style-type: disc;
-  padding-left: 1.5rem;
-  margin-bottom: 1rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
 }
 
 .prose li {
-  margin-bottom: 0.5rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  color: #c9d1d9;
 }
 
+.prose blockquote {
+  border-left: 4px solid #1f6feb;
+  background: rgba(31, 111, 235, 0.08);
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+  color: #8b949e;
+}
+
+.prose code {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.875em;
+  background: #161b22;
+  color: #79c0ff;
+  border: 1px solid rgba(110, 118, 129, 0.3);
+  padding: 0.2em 0.4em;
+  border-radius: 0.375rem;
+}
+
+.prose pre {
+  background: #0d1117;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  box-shadow: 0 4px 20px rgba(1, 4, 9, 0.4);
+}
+
+.prose pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: #e6edf3;
+  font-size: 0.9em;
+  line-height: 1.6;
+}
+
+.prose hr {
+  border: 0;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+/* Gitea Platform Design Tokens */
 .gitea-surface {
   background: linear-gradient(180deg, rgba(13, 17, 23, 0.98), rgba(13, 17, 23, 0.96));
 }
 
 .gitea-panel {
-  background: rgba(22, 27, 34, 0.96);
+  background: rgba(22, 27, 34, 0.92);
   border: 1px solid rgba(110, 118, 129, 0.35);
-  box-shadow: 0 10px 30px rgba(1, 4, 9, 0.2);
+  box-shadow: 0 10px 30px rgba(1, 4, 9, 0.35);
+  backdrop-filter: blur(12px);
 }
 
 .gitea-pill {
@@ -96,11 +200,21 @@ body {
   border: 1px solid rgba(48, 54, 61, 0.9);
   background: linear-gradient(180deg, #21262d, #161b22);
   color: var(--foreground);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.gitea-button:hover {
+  background: #30363d;
+  color: #ffffff;
 }
 
 .gitea-button-primary {
   border: 1px solid rgba(46, 160, 67, 0.75);
   background: linear-gradient(180deg, #2ea043, #238636);
   color: #f0fdf4;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.gitea-button-primary:hover {
+  background: #2ea043;
 }
