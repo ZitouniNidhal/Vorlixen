@@ -1,0 +1,47 @@
+name: Bug Report
+description: Create a report to help us fix a defect or unexpected behavior in NexaForge
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report an issue! Please search existing issues first to avoid duplicates.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Provide a clear and concise description of the bug.
+      placeholder: Tell us what you were trying to do and what went wrong...
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior.
+      placeholder: |
+        1. Run '...'
+        2. Navigate to '...'
+        3. Click on '....'
+        4. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What did you expect to happen instead?
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Environment & Context
+      description: Node version, OS, browser, and relevant terminal logs.
+      value: |
+        - OS: [e.g. macOS / Ubuntu / Windows]
+        - Node Version: [e.g. v20.12.0]
+        - Browser: [e.g. Chrome 124 / Firefox 125]
+    validations:
+      required: false

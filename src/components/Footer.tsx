@@ -11,12 +11,13 @@ export default function Footer() {
           </p>
         </div>
 
-        <div className="flex items-center gap-4 text-sm text-muted-foreground">
-          <Link href="/posts" className="transition hover:text-foreground">Blog</Link>
-          <Link href="/about" className="transition hover:text-foreground">About</Link>
+        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <Link href="/traceforge" className="transition hover:text-foreground">TraceForge-X</Link>
+          <Link href="/posts" className="transition hover:text-foreground">Workflows</Link>
           <Link href="/archives" className="transition hover:text-foreground">Archives</Link>
+          <Link href="/about" className="transition hover:text-foreground">About</Link>
           <Link
-            href="https://github.com/zitouninidhal"
+            href="https://github.com/ZitouniNidhal/nexaforge"
             target="_blank"
             rel="noopener noreferrer"
             className="transition hover:text-foreground"

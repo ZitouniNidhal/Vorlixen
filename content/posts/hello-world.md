@@ -2,6 +2,7 @@
 title: "Hello World"
 date: "2023-06-14"
 excerpt: "The obligatory first post - why I'm starting this blog and what to expect."
+tags: ["Meta", "AI", "Platform"]
 ---
 
 # Hello World

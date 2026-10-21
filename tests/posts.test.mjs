@@ -6,6 +6,11 @@ import matter from "gray-matter";
 
 const postsDirectory = path.join(process.cwd(), "content", "posts");
 
+function calculateReadingTime(text) {
+  const words = text.trim().split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.ceil(words / 200));
+}
+
 test("Content Directory: markdown posts exist and have valid structure", () => {
   const fileNames = fs.readdirSync(postsDirectory).filter((f) => f.endsWith(".md"));
   assert.ok(fileNames.length >= 5, `Expected at least 5 posts, found ${fileNames.length}`);
@@ -18,6 +23,8 @@ test("Content Directory: markdown posts exist and have valid structure", () => {
     assert.ok(data.title, `Post ${file} is missing a title`);
     assert.ok(data.date, `Post ${file} is missing a date`);
     assert.match(data.date, /^\d{4}-\d{2}-\d{2}$/, `Post ${file} date must match YYYY-MM-DD`);
+    assert.ok(Array.isArray(data.tags), `Post ${file} must have tags array in frontmatter`);
+    assert.ok(data.tags.length > 0, `Post ${file} must contain at least 1 tag`);
   }
 });
 
@@ -30,4 +37,13 @@ test("Post Slugs: valid format and safe from traversal", () => {
     assert.ok(slugRegex.test(slug), `Slug '${slug}' fails safe character regex`);
     assert.ok(!slug.includes(".."), `Slug '${slug}' contains path traversal`);
   }
+});
+
+test("Reading Time: calculates minimum 1 minute for short posts and accurate duration for long content", () => {
+  assert.strictEqual(calculateReadingTime(""), 1);
+  assert.strictEqual(calculateReadingTime("Hello world"), 1);
+
+  // 450 words should yield ceil(450 / 200) = 3 minutes
+  const words450 = Array(450).fill("word").join(" ");
+  assert.strictEqual(calculateReadingTime(words450), 3);
 });

@@ -24,6 +24,11 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  output: "export",
+  images: {
+    unoptimized: true,
+  },
+  ...(process.env.BASE_PATH ? { basePath: process.env.BASE_PATH } : {}),
   async headers() {
     return [
       {
