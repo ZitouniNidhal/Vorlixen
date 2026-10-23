@@ -57,3 +57,61 @@ test("TraceForge-X: computeTraceStats computes accurate metrics and percentiles"
   assert.strictEqual(stats.errorRatePercent, 25); // 1 error out of 4 = 25%
   assert.strictEqual(stats.totalTokensProcessed, 3000);
 });
+
+function filterTracesByLatencyThreshold(traces, minDurationMs) {
+  return traces.filter((t) => t.totalDurationMs >= minDurationMs);
+}
+
+function detectTraceAnomalies(trace, slowSpanThresholdMs = 250) {
+  const errorSpans = trace.spans.filter((s) => s.status === "error");
+  const slowSpans = trace.spans.filter((s) => s.durationMs >= slowSpanThresholdMs);
+
+  return {
+    hasError: trace.status === "error" || errorSpans.length > 0,
+    slowSpans,
+    errorSpans,
+  };
+}
+
+function exportTraceAsJson(trace) {
+  return JSON.stringify(trace, null, 2);
+}
+
+test("TraceForge-X: filterTracesByLatencyThreshold filters traces correctly", () => {
+  const traces = [
+    { traceId: "t1", totalDurationMs: 150 },
+    { traceId: "t2", totalDurationMs: 400 },
+    { traceId: "t3", totalDurationMs: 800 },
+  ];
+
+  const slow = filterTracesByLatencyThreshold(traces, 300);
+  assert.strictEqual(slow.length, 2);
+  assert.strictEqual(slow[0].traceId, "t2");
+  assert.strictEqual(slow[1].traceId, "t3");
+});
+
+test("TraceForge-X: detectTraceAnomalies flags errors and high latencies", () => {
+  const trace = {
+    status: "ok",
+    spans: [
+      { id: "s1", status: "ok", durationMs: 100 },
+      { id: "s2", status: "warning", durationMs: 320 },
+      { id: "s3", status: "error", durationMs: 50 },
+    ],
+  };
+
+  const anomalies = detectTraceAnomalies(trace, 250);
+  assert.strictEqual(anomalies.hasError, true);
+  assert.strictEqual(anomalies.slowSpans.length, 1);
+  assert.strictEqual(anomalies.slowSpans[0].id, "s2");
+  assert.strictEqual(anomalies.errorSpans.length, 1);
+  assert.strictEqual(anomalies.errorSpans[0].id, "s3");
+});
+
+test("TraceForge-X: exportTraceAsJson produces valid parseable JSON", () => {
+  const trace = { traceId: "tr-test-123", totalDurationMs: 250 };
+  const jsonStr = exportTraceAsJson(trace);
+  const parsed = JSON.parse(jsonStr);
+  assert.strictEqual(parsed.traceId, "tr-test-123");
+  assert.strictEqual(parsed.totalDurationMs, 250);
+});

@@ -387,3 +387,41 @@ export function generateSimulatedTrace(counter: number): PipelineTrace {
     ],
   };
 }
+
+/**
+ * Filters traces that exceed a given duration threshold (e.g. for SLA violation analysis).
+ */
+export function filterTracesByLatencyThreshold(
+  traces: PipelineTrace[],
+  minDurationMs: number
+): PipelineTrace[] {
+  return traces.filter((t) => t.totalDurationMs >= minDurationMs);
+}
+
+/**
+ * Inspects a trace and extracts all spans with errors or excessive latencies.
+ */
+export function detectTraceAnomalies(
+  trace: PipelineTrace,
+  slowSpanThresholdMs = 250
+): {
+  hasError: boolean;
+  slowSpans: TraceSpan[];
+  errorSpans: TraceSpan[];
+} {
+  const errorSpans = trace.spans.filter((s) => s.status === "error");
+  const slowSpans = trace.spans.filter((s) => s.durationMs >= slowSpanThresholdMs);
+
+  return {
+    hasError: trace.status === "error" || errorSpans.length > 0,
+    slowSpans,
+    errorSpans,
+  };
+}
+
+/**
+ * Formats a PipelineTrace into a pretty-printed JSON string suitable for export.
+ */
+export function exportTraceAsJson(trace: PipelineTrace): string {
+  return JSON.stringify(trace, null, 2);
+}
